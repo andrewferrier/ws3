@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <name>CNC-051</name>
+    <runtime>10000</runtime>
+    <client>
+        <name>C1</name>
+        <connectto>S1</connectto>
+        <creationDistribution>
+            <constant>1</constant>
+        </creationDistribution>
+        <destPossibility>S1</destPossibility>
+    </client>  
+    <server>
+        <name>S1</name>
+        <connectto>C1</connectto>
+        <serviceTimeDistribution>
+            <exponential>1</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>

@@ -1,0 +1,2 @@
+#!/bin/sh
+java -jar ws3.jar tests/demo.xml ../ws3.xsd

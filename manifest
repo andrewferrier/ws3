@@ -1,0 +1,23 @@
+Class-Path: xerces.jar
+Main-Class: doc.ajf98.websim.WebSim
+
+Name: doc/ajf98/websim/
+Sealed: true
+
+Name: doc/ajf98/websim/objects/
+Sealed: true
+
+Name: doc/ajf98/websim/processes/
+Sealed: true
+
+Name: doc/ajf98/websim/processes/abs/
+Sealed: true
+
+Name: doc/ajf98/websim/SimTools/
+Sealed: true
+
+Name: doc/ajf98/websim/SimTools/exceptions/
+Sealed: true
+
+Name: doc/ajf98/websim/util/
+Sealed: true

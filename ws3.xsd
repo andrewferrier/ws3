@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+
+<!--
+
+Schema for WSSS (Web Server Simulation System)
+version 0.5.7.1, Andrew Ferrier
+See http://www.new-destiny.co.uk/andrew/project/ for more information.
+
+All documents used as XML input documents for WSSS should comply
+with this Schema in full. In order for WSSS to output meaningful
+error messages when they do not fully comply, the XML input document
+must conform to a certain boilerplate style. See the user guide, available
+for download from the website above, for more information.
+      
+-->
+
+<xsd:schema targetNamespace="http://www.new-destiny.co.uk/andrew/project/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.new-destiny.co.uk/andrew/project/"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xml:lang="en">
+    
+    <xsd:annotation>
+        <xsd:documentation>
+        This is the Schema for the WSSS by Andrew Ferrier.
+        See http://www.new-destiny.co.uk/andrew/project/ for more information.
+        </xsd:documentation>
+    </xsd:annotation>
+          
+    <xsd:element name="system">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="name" type="SystemObjectNameType" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="runtime" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="client" type="ClientType" minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="networknode" type="NetworkNodeType" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="server" type="ServerType" minOccurs="1" maxOccurs="unbounded"/>                
+            </xsd:sequence>
+            <xsd:attribute name="defaultTTL" type="xsd:positiveInteger" default="32"/>
+            <xsd:attribute name="dataDumpPeriod" type="PositiveDouble" default="1"/>
+            <xsd:attribute name="traceLevel" type="xsd:nonNegativeInteger" default="0"/>
+            <xsd:attribute name="resetStatsPoint" type="xsd:double" default="-1"/>
+        </xsd:complexType>
+        <xsd:key name="SystemObjectNameKey">
+            <xsd:selector xpath="./*/name"/>
+            <xsd:field xpath="."/>
+        </xsd:key>
+        <xsd:keyref name="ConnectToKeyRef" refer="SystemObjectNameKey">
+            <xsd:selector xpath=".//connectto"/>
+            <xsd:field xpath="."/>
+        </xsd:keyref>
+        <xsd:keyref name="RouteDestinationKeyRef" refer="SystemObjectNameKey">
+            <xsd:selector xpath=".//routeto/destination"/>
+            <xsd:field xpath="."/>
+        </xsd:keyref>
+        <xsd:keyref name="RouteRouteKeyRef" refer="SystemObjectNameKey">
+            <xsd:selector xpath=".//routeto/route"/>
+            <xsd:field xpath="."/>
+        </xsd:keyref>
+    </xsd:element>
+    
+    <xsd:group name="SystemObjectGroup">
+        <xsd:sequence>
+            <xsd:element name="name" type="SystemObjectNameType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="connectto" type="SystemObjectNameType" minOccurs="1" maxOccurs="unbounded"/>
+            <xsd:element name="routeto" type="RouteToType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:group>
+    
+    <xsd:attributeGroup name="SystemObjectAttributes">
+        <xsd:attribute name="instances" type="xsd:positiveInteger" default="1"/>
+    </xsd:attributeGroup>        
+        
+    <xsd:complexType name="ClientType">
+        <xsd:sequence>
+            <xsd:group ref="SystemObjectGroup"/>
+            <xsd:element name="creationDistribution" type="DistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="destPossibility" type="SystemObjectNameType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="SystemObjectAttributes"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="ServerType">
+        <xsd:sequence>
+            <xsd:group ref="SystemObjectGroup"/>
+            <xsd:element name="serviceTimeDistribution" type="DistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="queueLength" type="QueueLengthType" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="SystemObjectAttributes"/>
+        <xsd:attribute name="threads" type="xsd:positiveInteger" default="1"/>
+        <xsd:attribute name="processors" type="xsd:positiveInteger" default="1"/>
+        <xsd:attribute name="threadGrain" type="PositiveDouble" default="0.1"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NetworkNodeType">
+        <xsd:sequence>
+            <xsd:group ref="SystemObjectGroup"/>
+            <xsd:element name="serviceTimeDistribution" type="DistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="queueLength" type="QueueLengthType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="drop" type="xsd:float" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="SystemObjectAttributes"/>
+    </xsd:complexType>
+        
+    <xsd:complexType name="RouteToType">
+        <xsd:sequence>
+            <xsd:element name="destination" type="SystemObjectNameType"/>
+            <xsd:element name="route" type="SystemObjectNameType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DistributionType">
+        <xsd:choice>
+            <xsd:element name="constant" type="PositiveDouble" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="exponential" type="PositiveDouble" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="geometric" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="uniform" type="UniformDistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="erlang" type="ErlangDistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="positiveNormal" type="NormalDistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="weibull" type="WeibullDistributionType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="pareto" type="PositiveDouble" minOccurs="1" maxOccurs="1"/>
+        </xsd:choice>
+    </xsd:complexType>
+    
+    <xsd:complexType name="UniformDistributionType">
+        <xsd:sequence>
+            <xsd:element name="lbound" type="PositiveDouble" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ubound" type="PositiveDouble" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>        
+    
+    <xsd:complexType name="ErlangDistributionType">
+        <xsd:sequence>
+            <xsd:element name="k" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="theta" type="xsd:double" minOccurs="1" maxOccurs="1"/>            
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="NormalDistributionType">
+        <xsd:sequence>
+            <xsd:element name="mu" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="sigma" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="WeibullDistributionType">
+        <xsd:sequence>
+            <xsd:element name="alpha" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="beta" type="xsd:double" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="PositiveDouble">
+        <xsd:restriction base="xsd:double">
+            <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="SystemObjectNameType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([a-zA-Z0-9]|-|_){1,127}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="QueueLengthType">
+        <xsd:union memberTypes="xsd:positiveInteger QueueLengthInfiniteType"/>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="QueueLengthInfiniteType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="infinite"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

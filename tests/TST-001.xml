@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!-- TST-001 version 0.1 -->
+        
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        dataDumpPeriod="10" traceLevel="4">
+    <name>TST-001</name>
+    <runtime>100</runtime>
+    <client>
+        <name>client</name>
+        <connectto>server</connectto>
+        <creationDistribution>
+            <constant>1</constant>
+        </creationDistribution>
+        <destPossibility>server</destPossibility>
+    </client>
+    <server>
+        <name>server</name>
+        <connectto>client</connectto>
+        <serviceTimeDistribution>
+            <constant>1</constant>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<!-- TST-007 version 0.1 -->
+        
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        traceLevel="4">
+    <name>TST-007</name>
+    <runtime>1000</runtime>
+    <client>
+        <name>C1</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>S1</destination>
+            <route>N1</route>
+        </routeto>    
+        <creationDistribution>
+            <pareto>1.1</pareto>
+        </creationDistribution>
+        <destPossibility>S1</destPossibility>
+    </client>
+    <client>
+        <name>C2</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>S2</destination>
+            <route>N1</route>
+        </routeto>    
+        <creationDistribution>
+            <constant>3</uniform>
+        </creationDistribution>
+        <destPossibility>S2</destPossibility>
+    </client>    
+    <networknode>
+        <name>N1</name>
+        <connectto>S1</connectto>
+        <connectto>S2</connectto>
+        <serviceTimeDistribution>
+            <uniform>
+                <lbound>1.5</lbound>
+                <ubound>2.5</lbound>
+            </uniform>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </networknode>
+    <server threads="4" processors="3" threadGrain="0.4">
+        <name>S1</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>C1</destination>
+            <route>N1</route>
+        </routeto>    
+        <serviceTimeDistribution>
+            <exponential>1</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+    <server threads="5" processors="2" threadGrain="0.3">
+        <name>S2</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>C2</destination>
+            <route>N1</route>
+        </routeto>    
+        <serviceTimeDistribution>
+            <positiveNormal>
+                <mu>1</mu>
+                <sigma>2</sigma>
+            </positiveNormal>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>
