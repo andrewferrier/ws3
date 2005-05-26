@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!--
+
+Simple Demo System for Presentation 2002-06-18
+
+-->
+
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        dataDumpPeriod="1" traceLevel="4">
+    <name>demo</name>
+    <runtime>500</runtime>
+    
+    <!-- 5 clients -->
+    
+    <client instances="5">
+        <name>C</name>
+        <connectto>N</connectto>
+        <routeto>
+            <destination>S</destination>
+            <route>N</route>
+        </routeto>
+        <creationDistribution>
+            <exponential>1</exponential>
+        </creationDistribution>
+        <destPossibility>S</destPossibility>
+    </client>  
+    
+    <!-- 1 network node -->
+    
+    <networknode>
+        <name>N</name>
+        <connectto>C</connectto>
+        <connectto>S</connectto>
+        <serviceTimeDistribution>
+            <uniform>
+                <lbound>0.05</lbound>
+                <ubound>0.14</ubound>
+            </uniform>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </networknode>
+    
+    <!-- 1 server with 2 threads and 2 processors -->
+    
+    <server threads="2" processors="2">
+        <name>S</name>
+        <connectto>N</connectto>
+        <routeto>
+            <destination>C</destination>
+            <route>N</route>
+        </routeto>
+        <serviceTimeDistribution>
+            <exponential>2.5</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>

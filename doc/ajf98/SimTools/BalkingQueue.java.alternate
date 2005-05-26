@@ -1,0 +1,57 @@
+package doc.ajf98.SimTools;
+
+import doc.ajf98.SimTools.exceptions.*;
+
+/**
+ * @author Andrew Ferrier
+ * @version 0.1
+ */
+
+public class BalkingQueue extends Queue
+{
+	/**
+	 * An integer value which can represent a queue of infinite size.
+	 */
+
+blah-de-blah
+
+
+	public static final int INFINITE_SIZE = -1;
+
+	/**
+	 * Create a new Balking Queue.
+	 *
+	 * @param maxSize the maximum size which the queue can grow to.
+	 */
+
+	public BalkingQueue(int maxSize)
+	{
+		this.maxSize = maxSize;
+	}
+
+	/**
+	 * Place an object on this queue.
+	 *
+	 * @param o the object to place on the queue.
+	 * @throws QueueFullException If queue is full. The object
+	 *	in this case is NOT placed on the queue.
+	 */
+
+	public void enqueue(Object o) throws QueueFullException
+	{
+		if(this.queueLength() >= maxSize)
+			throw new QueueFullException("Queue " + this + " is full.");
+		else
+			super.enqueue(o);
+	}
+
+	private int maxSize;
+}
+
+
+
+
+
+
+
+

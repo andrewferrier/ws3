@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<!-- TST-002 version 0.1 -->
+        
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        dataDumpPeriod="10">
+    <name>TST-002</name>
+    <runtime>10000</runtime>
+    <client>
+        <name>client</name>
+        <connectto>networknode</connectto>
+        <routeto>
+            <destination>server</destination>
+            <route>networknode</route>
+        </routeto>
+        <creationDistribution>
+            <exponential>1</exponential>
+        </creationDistribution>
+        <destPossibility>server</destPossibility>
+    </client>
+    <networknode>
+        <name>networknode</name>
+        <connectto>client</connectto>
+        <connectto>server</connectto>
+        <serviceTimeDistribution>
+            <exponential>1</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>    
+    </networknode>
+    <server>
+        <name>server</name>
+        <connectto>networknode</connectto>
+        <routeto>
+            <destination>client</destination>
+            <route>networknode</route>
+        </routeto>
+        <serviceTimeDistribution>
+            <exponential>1</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>

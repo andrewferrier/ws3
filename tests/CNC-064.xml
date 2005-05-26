@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        dataDumpPeriod="10">
+    <name>CNC-064</name>
+    <runtime>10000</runtime>
+    <client instances="5">
+        <name>C1</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>S1</destination>
+            <route>N1</route>
+        </routeto>
+        <creationDistribution>
+            <exponential>1</exponential>
+        </creationDistribution>
+        <destPossibility>S1</destPossibility>
+    </client>  
+    <networknode>
+        <name>N1</name>
+        <connectto>C1</connectto>
+        <connectto>S1</connectto>
+        <serviceTimeDistribution>
+            <exponential>5</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </networknode>
+    <server>
+        <name>S1</name>
+        <connectto>N1</connectto>
+        <routeto>
+            <destination>C1</destination>
+            <route>N1</route>
+        </routeto>
+        <serviceTimeDistribution>
+            <exponential>5</exponential>
+        </serviceTimeDistribution>
+        <queueLength>infinite</queueLength>
+    </server>
+</system>
