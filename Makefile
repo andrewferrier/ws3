@@ -32,7 +32,7 @@ JAVAC           = javac
 JAVADOC         = javadoc
 JAR             = jar
 
-JAVAC_FLAGS     = -deprecation -target 1.3
+JAVAC_FLAGS     = -deprecation -target 1.5
 JAVADOC_FLAGS   = -version -author
 JAR_FLAGS       = cvfm
 
