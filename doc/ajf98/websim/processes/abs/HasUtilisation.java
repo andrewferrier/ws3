@@ -1,6 +1,6 @@
 /*
 
-Copyright (c) 2002, Andrew Ferrier. Portions based on work by, and (c) 
+Copyright (c) 2002, 2012, Andrew Ferrier. Portions based on work by, and (c) 
 Tony Field 2000, 2001. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without 

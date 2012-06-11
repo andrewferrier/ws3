@@ -1,6 +1,6 @@
 /*
 
-Copyright (c) 2002, Andrew Ferrier. Portions based on work by, and (c) 
+Copyright (c) 2002, 2012, Andrew Ferrier. Portions based on work by, and (c) 
 Tony Field 2000, 2001. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without 
@@ -145,8 +145,7 @@ public class WebSim
 	public static void main(String[] args) throws InterruptedException
 	{
 		System.out.println("\n" + APPLICATION_NAME + " " + VERSION);
-		System.out.println("Copyright (C) Andrew Ferrier (andrew@new-destiny.co.uk) 2002.");
-		System.out.println("http://www.new-destiny.co.uk/andrew/project/");
+		System.out.println("Copyright (C) Andrew Ferrier (andrew@new-destiny.co.uk) 2002, 2012.");
 		System.out.println("See the file LICENCE for licencing information\n");
       
 		if (args.length != 2)

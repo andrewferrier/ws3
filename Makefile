@@ -1,8 +1,4 @@
-# Modified by Andrew Ferrier to version 0.2.10
-#
 # Makefile for WS3 (aka WSSS, Web Server Simulation System)
-#
-# See http://www.new-destiny.co.uk/andrew/project/
 #
 # Todo:
 # 	- Allow changing of PREFIX to work with shell script.
