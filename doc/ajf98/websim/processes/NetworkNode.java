@@ -54,7 +54,7 @@ public class NetworkNode extends RouteableSystemObject implements HasQueue, HasU
 		super(soid, connections, routes);
 		this.serviceTimeDist = serviceTimeDist;
 		this.drop = drop;
-		this.q = queueSize == (BalkingQueue.INFINITE_SIZE) ? new Queue() : new BalkingQueue(queueSize);
+		this.q = queueSize == (BalkingQueue.INFINITE_SIZE) ? new doc.ajf98.SimTools.Queue() : new BalkingQueue(queueSize);
 		this.reset();
 	}
 
@@ -157,7 +157,7 @@ public class NetworkNode extends RouteableSystemObject implements HasQueue, HasU
 	}
                         
 	private DistributionSampler serviceTimeDist;
-	private Queue q;
+	private doc.ajf98.SimTools.Queue q;
 	private Measure serviceTimeMeasure = new Measure();
 	private Resource u = new Resource();
 	private float drop;

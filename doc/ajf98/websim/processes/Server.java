@@ -54,7 +54,7 @@ public class Server extends RouteableSystemObject implements HasQueue, HasUtilis
 		super(soid, connections, routes);
 		this.serviceTimeDist = serviceTimeDist;
 		this.threads = threads;
-		this.q = queueSize == (BalkingQueue.INFINITE_SIZE) ? new Queue() : new BalkingQueue(queueSize);
+		this.q = queueSize == (BalkingQueue.INFINITE_SIZE) ? new doc.ajf98.SimTools.Queue() : new BalkingQueue(queueSize);
 		this.serverProcessors = processors;
 
 		this.reset();
@@ -201,7 +201,7 @@ public class Server extends RouteableSystemObject implements HasQueue, HasUtilis
 	private java.util.List serverThreads = new ArrayList();
 	
 	private DistributionSampler serviceTimeDist;
-	private Queue q;
+	private doc.ajf98.SimTools.Queue q;
 
 	private long faultyIn;
 	private long in;
