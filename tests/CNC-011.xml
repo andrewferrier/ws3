@@ -2,7 +2,7 @@
 
 <!-- CNC-011 version 0.1 -->
 
-<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+<system xmlns="http://www.andrewferrier.com/oldpages/project/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <name>CNC-011</name>
     <runtime>10000</runtime>

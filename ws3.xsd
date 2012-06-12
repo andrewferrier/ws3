@@ -4,7 +4,7 @@
 
 Schema for WSSS (Web Server Simulation System)
 version 0.5.7.1, Andrew Ferrier
-See http://www.new-destiny.co.uk/andrew/project/ for more information.
+See http://www.andrewferrier.com/oldpages/project/ for more information.
 
 All documents used as XML input documents for WSSS should comply
 with this Schema in full. In order for WSSS to output meaningful
@@ -14,9 +14,9 @@ for download from the website above, for more information.
       
 -->
 
-<xsd:schema targetNamespace="http://www.new-destiny.co.uk/andrew/project/"
+<xsd:schema targetNamespace="http://www.andrewferrier.com/oldpages/project/"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-    xmlns="http://www.new-destiny.co.uk/andrew/project/"
+    xmlns="http://www.andrewferrier.com/oldpages/project/"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
     xml:lang="en">
@@ -24,7 +24,7 @@ for download from the website above, for more information.
     <xsd:annotation>
         <xsd:documentation>
         This is the Schema for the WSSS by Andrew Ferrier.
-        See http://www.new-destiny.co.uk/andrew/project/ for more information.
+        See http://www.andrewferrier.com/oldpages/project/ for more information.
         </xsd:documentation>
     </xsd:annotation>
           

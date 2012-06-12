@@ -6,7 +6,7 @@ Simple Demo System for Presentation 2002-06-18
 
 -->
 
-<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+<system xmlns="http://www.andrewferrier.com/oldpages/project/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         dataDumpPeriod="1" traceLevel="4">
     <name>demo</name>

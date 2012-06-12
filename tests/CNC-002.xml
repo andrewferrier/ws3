@@ -2,7 +2,7 @@
 
 <!-- CNC-002 version 0.2 -->
 
-<system xmlns="http://www.new-destiny.co.uk/andrew/project/"
+<system xmlns="http://www.andrewferrier.com/oldpages/project/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         dataDumpPeriod="10">
     <name>CNC-002</name>

@@ -145,7 +145,7 @@ public class WebSim
 	public static void main(String[] args) throws InterruptedException
 	{
 		System.out.println("\n" + APPLICATION_NAME + " " + VERSION);
-		System.out.println("Copyright (C) Andrew Ferrier (andrew@new-destiny.co.uk) 2002, 2012.");
+		System.out.println("Copyright (C) Andrew Ferrier 2002, 2012.");
 		System.out.println("See the file LICENCE for licencing information\n");
       
 		if (args.length != 2)
@@ -173,7 +173,7 @@ public class WebSim
 		try
 		{
 			dbf.setAttribute("http://apache.org/xml/features/validation/schema", new Boolean(true));
-			dbf.setAttribute("http://apache.org/xml/properties/schema/external-schemaLocation", "http://www.new-destiny.co.uk/andrew/project/ " + schemaFile);
+			dbf.setAttribute("http://apache.org/xml/properties/schema/external-schemaLocation", "http://www.andrewferrier.com/oldpages/project/ " + schemaFile);
 		}
 		catch(IllegalArgumentException e)
 		{
