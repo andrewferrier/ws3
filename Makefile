@@ -28,7 +28,7 @@ JAVAC           = javac
 JAVADOC         = javadoc
 JAR             = jar
 
-JAVAC_FLAGS     = -deprecation -target 1.5
+JAVAC_FLAGS     = -deprecation
 JAVADOC_FLAGS   = -version -author
 JAR_FLAGS       = cvfm
 
